@@ -5,8 +5,8 @@
 require "rubygems"
 require 'active_rdf'
 require 'test/unit'
-require 'federation/federation_manager'
-require 'queryengine/query'
+require 'active_rdf/storage/federated_store'
+require 'active_rdf/query/query'
 
 
 class TestSparqlAdapter < Test::Unit::TestCase
@@ -22,17 +22,6 @@ class TestSparqlAdapter < Test::Unit::TestCase
 
   def test_registration
     assert_instance_of SparqlAdapter, @adapter
-  end
-
-  def test_language
-    sunset = RDFS::Resource.new("http://dbpedia.org/resource/77_Sunset_Strip")
-    abstract = RDFS::Resource.new("http://dbpedia.org/property/abstract")
-
-    german = Query.new.distinct(:o).where(sunset,abstract,:o).limit(1).lang(:o,'de').execute.first
-    english = Query.new.distinct(:o).where(sunset,abstract,:o).limit(1).lang(:o,'en').execute.first
-
-    assert english =~ /^77 Sunset Strip is the first hour-length private detective series in American television history/
-    assert german =~ /^77 Sunset Strip ist ein Serienklassiker aus den USA um das gleichnamige, in Los Angeles am Sunset Boulevard angesiedelte Detektivbüro/
   end
 
   def test_limit_offset

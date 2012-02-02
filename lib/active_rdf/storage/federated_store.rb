@@ -1,5 +1,3 @@
-require 'active_rdf/federation/connection_pool'
-
 include ActiveRdfBenchmark
 
 # Manages the federation of datasources: distributes queries to right

@@ -1,17 +1,17 @@
 require 'rake'
 require 'rake/testtask'
 require 'rake/clean'
-require 'rake/rdoctask'
+require 'rdoc/task'
 require 'fileutils'
 include FileUtils
 
-require 'tools/rakehelp'
+#require 'tools/rakehelp'
 
 $version  = IO.read('VERSION').strip
 $name     = 'activerdf'
 $distdir  = "#$name-#$version"
 
-setup_clean ["pkg", "lib/*.bundle", "*.gem", ".config"]
+#setup_clean ["pkg", "lib/*.bundle", "*.gem", ".config"]
 
 Rake::RDocTask.new do |rdoc|
   files = ['README', 'LICENSE', 'lib/**/*.rb', 'doc/**/*.rdoc', 'test/*.rb']

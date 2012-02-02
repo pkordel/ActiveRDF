@@ -15,7 +15,7 @@ module ActiveRDF
   #   ResourceQuery.new(RDFS::Resource).test::age(27).execute                         # find RDFS::Resources having the fully qualified property and value
   #   ResourceQuery.new(TEST::Person).age(27).eye(LocalizedString('blue','en')).execute  # chain multiple properties together, ANDing restrictions
   class ResourceQuery
-    private(:type)
+#    private(:type)
 
     def initialize(type,context = nil)
       @ns = nil

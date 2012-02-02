@@ -1,6 +1,3 @@
-require 'active_rdf_helpers'
-
-
 # Direct access for Redland adapter
 # 
 # Syntax

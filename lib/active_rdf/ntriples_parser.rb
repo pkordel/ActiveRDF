@@ -13,7 +13,7 @@ module ActiveRDF
       when MatchBNode
         resource_class.new("http://www.activerdf.org/bnode/#{UUIDTools::UUID.random_create}/#$1")
       when MatchLiteral
-        value = fix_unicode($1)
+        value = $1
         if $2
         RDFS::Literal.typed(value, resource_class.new($2))
         elsif $3
@@ -64,7 +64,7 @@ module ActiveRDF
                  when MatchBNode
                    result_type.new("http://www.activerdf.org/bnode/#{uuid}/#$1")
                  when MatchLiteral
-                   value = fix_unicode($1)
+                   value = $1
                    if $2
                      RDFS::Literal.typed(value, result_type.new($2))
                    elsif $3
@@ -89,9 +89,9 @@ module ActiveRDF
     MatchNode = Regexp.union(MatchBNode,MatchResource,MatchLiteral)
 
     # fixes unicode characters in literals (because we parse them wrongly somehow)
-    def self.fix_unicode(str)
-      tmp = str.gsub(/\\\u([0-9a-fA-F]{4,4})/u){ "U+#$1" }
-      tmp.gsub(/U\+([0-9a-fA-F]{4,4})/u){["#$1".hex ].pack('U*')}
-    end
+#    def self.fix_unicode(str)
+#      tmp = str.gsub(/\\\u([0-9a-fA-F]{4,4})/u){ "U+#$1" }
+#      tmp.gsub(/U\+([0-9a-fA-F]{4,4})/u){["#$1".hex ].pack('U*')}
+#    end
   end
 end

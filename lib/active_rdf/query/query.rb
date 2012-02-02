@@ -1,5 +1,3 @@
-require 'active_rdf/federation/federation_manager'
-
 # Represents a query on a datasource, abstract representation of SPARQL
 # features. Query is passed to federation manager or adapter for execution on
 # data source.  In all clauses symbols represent variables:

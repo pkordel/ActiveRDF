@@ -1,7 +1,3 @@
-require 'active_rdf/objectmanager/object_manager'
-require 'active_rdf/objectmanager/namespace'
-require 'active_rdf/queryengine/query'
-
 module RDFS
   # Represents an RDF resource and manages manipulations of that resource,
   # including data lookup (e.g. eyal.age), data updates (e.g. eyal.age=20),
